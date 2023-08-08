@@ -58,13 +58,13 @@ class ViewController: UIViewController {
     private func tap() {
         present(vc1, animated: true)
         
-        // A화면에서 B화면을 present > A화면에서 present (x)
+        // A화면에서 B화면을 present > A화면에서 C화면을 present (x)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             print("<1> present!!!")
             self.present(self.vc2, animated: true)
         })
         
-        // A화면에서 B화면을 present > B화면에서 present (o)
+        // A화면에서 B화면을 present > B화면에서 C화면을 present (o)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
             print("<2> present!!!")
             self.vc1.present(self.vc2, animated: true)
@@ -76,13 +76,13 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(vc1, animated: true)
         
         if Bool.random() {
-            // A화면에서 push > A화면에서 present (o)
+            // A화면에서 B화면을 push > A화면에서 C화면을 present (o)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                 print("<1> present!!!")
                 self.present(self.vc2, animated: true)
             })
         } else {
-            // A화면에서 push > B화면에서 present (o)
+            // A화면에서 B화면을 push > B화면에서 C화면을 present (o)
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
                 print("<2> present!!!")
                 self.vc1.present(self.vc2, animated: true)
